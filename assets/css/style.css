@@ -2329,10 +2329,78 @@ ul, ol {
   transform: translateY(0);
 }
 
+/* Philosophy Grid (Our Story) */
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+.philosophy-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+/* Showroom Cards Grid (Yamaha) */
+.showroom-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.showroom-card {
+  background: #fff;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Blue Square Features (Yamaha) */
+.blue-square-features-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+/* Contact Split Grid (Reach Us) */
+.contact-split-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: start;
+}
+.contact-form-box {
+  background: #ffffff;
+  padding: 36px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+/* CFA Metrics Grid */
+.cfa-metrics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
 /* Responsive Breakpoints & Mobile Optimization */
 @media (max-width: 1024px) {
   .portfolio-grid, .models-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .showroom-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
   }
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -2378,6 +2446,28 @@ ul, ol {
   .leadership-grid {
     grid-template-columns: 1fr;
   }
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .philosophy-card {
+    padding: 24px 18px;
+  }
+  .showroom-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .blue-square-features-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .contact-split-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .contact-form-box {
+    padding: 24px 18px;
+  }
   .hero-slider {
     min-height: 480px;
     height: auto;
@@ -2417,6 +2507,24 @@ ul, ol {
   .section-desc {
     font-size: 14px;
     line-height: 1.6;
+  }
+
+  /* All Grid Cards 1-Column on Mobile Phones */
+  .philosophy-grid, 
+  .showroom-cards-grid, 
+  .blue-square-features-grid, 
+  .contact-split-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .philosophy-card {
+    padding: 20px 16px;
+  }
+  .showroom-card {
+    padding: 18px 14px;
+  }
+  .cfa-metrics-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   /* Top Bar Mobile Optimization */
