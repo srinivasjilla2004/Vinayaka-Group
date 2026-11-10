@@ -2329,30 +2329,36 @@ ul, ol {
   transform: translateY(0);
 }
 
-/* Responsive Breakpoints */
+/* Responsive Breakpoints & Mobile Optimization */
 @media (max-width: 1024px) {
   .portfolio-grid, .models-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .cfa-split, .story-split, .network-container, .cfa-map-grid {
     grid-template-columns: 1fr;
   }
   .blue-square-banner {
     grid-template-columns: 1fr;
-    padding: 32px;
+    padding: 28px;
   }
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 }
 
 @media (max-width: 860px) {
+  :root {
+    --nav-height: 68px;
+  }
   .nav-menu, .header-actions .btn-nav-cta {
     display: none;
   }
@@ -2364,18 +2370,412 @@ ul, ol {
   }
   .top-bar-inner {
     justify-content: center;
+    padding: 8px 16px;
   }
-  .portfolio-grid, .models-grid, .products-grid {
+  .portfolio-grid, .models-grid {
     grid-template-columns: 1fr;
   }
   .leadership-grid {
     grid-template-columns: 1fr;
   }
   .hero-slider {
-    height: 520px;
+    min-height: 480px;
+    height: auto;
   }
   .footer-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --nav-height: 62px;
+  }
+
+  /* Prevent horizontal scrollbars */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+  }
+
+  /* Compact container padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Compact section vertical paddings */
+  .section-padding {
+    padding: 46px 0;
+  }
+  .section-header {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: clamp(22px, 5.8vw, 28px);
+    line-height: 1.25;
+  }
+  .section-desc {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* Top Bar Mobile Optimization */
+  .top-bar {
+    padding: 6px 0;
+    font-size: 11px;
+  }
+  .top-bar-inner {
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+  }
+  .top-bar-right {
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .top-info-item {
+    font-size: 11px;
+    gap: 5px;
+  }
+  .top-info-item svg {
+    width: 12px;
+    height: 12px;
+  }
+  .top-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+
+  /* Header Branding Mobile Sizing */
+  .header-inner {
+    padding: 0 14px;
+  }
+  .brand-logo-img {
+    height: 38px;
+    padding: 3px 6px;
+  }
+  .brand-title {
+    font-size: 15px;
+    letter-spacing: 0.2px;
+  }
+  .brand-subtitle {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+
+  /* Hero Slider Mobile Polish */
+  .hero-slider {
+    min-height: 520px;
+    height: auto;
+    padding: 70px 0 80px;
+    display: flex;
+    align-items: center;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+  }
+  .slide-content {
+    padding: 0 16px;
+    max-width: 100%;
+  }
+  .slide-badge {
+    font-size: 10.5px;
+    padding: 4px 10px;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .slide-title {
+    font-size: clamp(22px, 6.5vw, 30px);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+  }
+  .slide-desc {
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin-bottom: 22px;
+  }
+  .slide-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+  .btn-slide-primary, .btn-slide-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 13.5px;
+    text-align: center;
+  }
+  .slider-nav {
+    display: none; /* Hidden on mobile to avoid overlapping content */
+  }
+  .slider-dots {
+    bottom: 16px;
+  }
+
+  /* Stats Section Mobile 2x2 Grid */
+  .stats-bar-section {
+    padding: 26px 0;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .stat-item {
+    border-right: none;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-sm);
+    padding: 12px 8px;
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+  .stat-icon-wrap {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+    margin: 0 auto;
+  }
+  .stat-number {
+    font-size: 24px;
+    margin-bottom: 2px;
+  }
+  .stat-label {
+    font-size: 11px;
+    line-height: 1.25;
+  }
+
+  /* Yamaha Bike Filter Tabs - Horizontal Swipeable */
+  .filter-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 6px 12px;
+    gap: 8px;
+    margin-bottom: 24px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .filter-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 12.5px;
+  }
+
+  /* Models Grid */
+  .models-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .model-media {
+    height: 190px;
+  }
+  .model-info-wrap {
+    padding: 16px;
+  }
+  .model-name {
+    font-size: 18px;
+  }
+  .model-tagline {
+    font-size: 12px;
+    min-height: auto;
+    margin-bottom: 12px;
+  }
+  .model-specs-grid {
+    padding: 8px;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .spec-item small {
+    font-size: 9px;
+  }
+  .spec-item strong {
+    font-size: 11.5px;
+  }
+
+  /* Gopuram E-Commerce 2-Column Mobile Grid */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .product-media {
+    height: 145px;
+    padding: 8px;
+  }
+  .product-body {
+    padding: 12px 10px;
+  }
+  .product-tag {
+    font-size: 9.5px;
+    padding: 2px 6px;
+  }
+  .product-title {
+    font-size: 13.5px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .product-code-badge {
+    font-size: 9px;
+    padding: 2px 5px;
+  }
+  .product-packing-badge {
+    font-size: 10.5px;
+    padding: 4px 6px;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  .product-desc {
+    display: none; /* Hide long paragraph on mobile product cards for compact view */
+  }
+  .btn-order-wa {
+    font-size: 11px;
+    padding: 8px 10px;
+    gap: 5px;
+  }
+  .btn-catalog-wa {
+    font-size: 11px;
+    padding: 6px 8px;
+  }
+
+  /* Gopuram Catalog Hero & Toolbar */
+  .gopuram-catalog-hero {
+    padding: 20px 14px;
+    border-radius: var(--radius-md);
+  }
+  .gopuram-catalog-title {
+    font-size: 20px;
+  }
+  .gopuram-catalog-desc {
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .gopuram-catalog-qr {
+    display: none; /* Hidden on mobile */
+  }
+  .catalog-toolbar {
+    padding: 12px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .catalog-search-wrap {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  #gopuramFilters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding: 4px 4px 10px;
+    gap: 8px;
+    margin-bottom: 18px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  #gopuramFilters::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* CFA / Logistics Grid & Cards */
+  .cfa-clients-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .cfa-client-card {
+    padding: 14px 10px;
+  }
+  .cfa-features-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .cfa-feature-card {
+    padding: 18px 14px;
+  }
+
+  /* Reach Us / Showroom Maps */
+  .network-container {
+    padding: 16px;
+    border-radius: var(--radius-md);
+  }
+  .location-tab-btn {
+    padding: 14px;
+  }
+  .location-tab-info strong {
+    font-size: 14.5px;
+  }
+  .location-tab-info span {
+    font-size: 12px;
+  }
+  .location-map-wrap, .location-map-iframe {
+    min-height: 250px;
+    height: 250px;
+  }
+
+  /* Modal Mobile Responsiveness */
+  .modal-overlay {
+    padding: 14px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+  .modal-box {
+    padding: 22px 18px;
+    margin: 20px auto;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  /* Floating WhatsApp & Scroll Top Buttons */
+  .floating-whatsapp {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    bottom: 18px;
+    right: 16px;
+  }
+  .btn-scroll-top {
+    width: 38px;
+    height: 38px;
+    font-size: 15px;
+    bottom: 18px;
+    left: 16px;
+    right: auto;
+  }
+
+  /* Footer Mobile */
+  .footer {
+    padding: 46px 0 24px;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* Extra Small Devices (iPhone SE, Galaxy A-series) */
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .product-media {
+    height: 180px;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .brand-subtitle {
+    display: none;
   }
 }
 

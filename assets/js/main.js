@@ -81,6 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (overlay) overlay.addEventListener('click', closeDrawer);
   if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
 
+  // Close drawer when any nav link inside it is tapped
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+  }
+
   /* 4. Hero Carousel Slider (Home Page Only) */
   const slides = document.querySelectorAll('.hero-slider .slide');
   const dots = document.querySelectorAll('.slider-dots .slider-dot');
@@ -133,6 +140,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroSlider) {
       heroSlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
       heroSlider.addEventListener('mouseleave', () => slideInterval = setInterval(nextSlide, 5500));
+
+      // Mobile Touch Swipe Gesture Support
+      let touchStartX = 0;
+      let touchEndX = 0;
+      heroSlider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      heroSlider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) {
+          clearInterval(slideInterval);
+          nextSlide();
+          slideInterval = setInterval(nextSlide, 5500);
+        } else if (touchEndX - touchStartX > 45) {
+          clearInterval(slideInterval);
+          prevSlide();
+          slideInterval = setInterval(nextSlide, 5500);
+        }
+      }, { passive: true });
     }
   }
 
